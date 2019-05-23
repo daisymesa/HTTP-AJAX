@@ -1,12 +1,10 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import logo from './logo.svg';
 import './App.css';
 
 import axios from 'axios';
 import { Route } from 'react-router-dom';
 
-import Friends from './components/Friends';
+import FriendsContainer from './components/FriendsContainer';
 
 class App extends React.Component {
   constructor() {
@@ -16,10 +14,14 @@ class App extends React.Component {
     }
   }
 
+
   componentDidMount() {
     axios
       .get('http://localhost:5000/friends')
-      .then(response => this.setstate[{ friends: response.data }])
+      .then(response => {
+        console.log(response.data) 
+        this.setState ({ friends: response.data })}
+        )
       .catch(err => console.log(err));
   }
 
@@ -27,10 +29,12 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <Route exact path='/' render={props =>
-          <Friends  {...props}
-            friends={this.state.friends} />}
-        />
+        <Route 
+        exact path='/' 
+        render={props => <FriendsContainer {...props}
+            friends={this.state.friends} />} >
+        </Route>
+
       </div>
     );
   }
