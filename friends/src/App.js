@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import './App.css';
 
 import axios from 'axios';
@@ -6,14 +6,13 @@ import { Route } from 'react-router-dom';
 
 import FriendsContainer from './components/FriendsContainer';
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
       friends: []
     }
   }
-
 
   componentDidMount() {
     axios
