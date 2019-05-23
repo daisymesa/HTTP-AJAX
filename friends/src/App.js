@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Route } from 'react-router-dom';
 
 import FriendsContainer from './components/FriendsContainer';
+import NewFriendForm from './components/NewFriendForm';
 
 class App extends Component {
   constructor() {
@@ -32,6 +33,10 @@ class App extends Component {
         exact path='/' 
         render={props => <FriendsContainer {...props}
             friends={this.state.friends} />} >
+        </Route>
+        <Route 
+        exact path='/' 
+        render={props => <NewFriendForm />} >
         </Route>
 
       </div>
